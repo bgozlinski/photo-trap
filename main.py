@@ -16,6 +16,6 @@ while True:
     cv2.imshow("Frame", frame)
 
     # press q to end loop
-    if cv2.wai tKey(1) & 0xFF == ord('q'):
+    if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
