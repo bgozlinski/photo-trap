@@ -4,6 +4,7 @@
 
 WIDTH = 1280  # camera width
 HEIGHT = 720  # camera height
+FRAMERATE = 25  # camera fps
 
 DISTANCE_WIDTH = 200  # distance from centre in y-axis
 DISTANCE_HEIGHT = 200  # distance from centre in x-axis
