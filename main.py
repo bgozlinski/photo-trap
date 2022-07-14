@@ -7,7 +7,7 @@ from config import *
 initCamera = Camera(WIDTH, HEIGHT)
 
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
-body_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_fullbody.xml")
+body_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_upperbody.xml")
 
 while True:
     # get frame
@@ -18,14 +18,13 @@ while True:
     # draw rectangle in centre of (WIDTH, HEIGHT) with (dW, dH) lengths
     # Draw(frame).rectangle((int(WIDTH/2-DISTANCE_WIDTH/2), int(HEIGHT/2 - DISTANCE_HEIGHT/2)),
     #                       (int(DISTANCE_WIDTH + WIDTH/2), int(DISTANCE_HEIGHT + HEIGHT/2)))
-    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
-    bodies = body_cascade.detectMultiScale(gray, 1.3, 1)
+    faces = face_cascade.detectMultiScale(gray, 1.1, 5)
+    bodies = body_cascade.detectMultiScale(gray, 1.3, 4)
 
-    for x, y, w, h in faces:
-        center_coordinates = x + w // 2, y + h // 2
-        radius = w // 2  # or can be h / 2 or can be anything based on your requirements
-        Draw(frame).circle(center_coordinates, radius)
-        # Draw(frame).rectangle((x, y), (x+w, y+h))
+    for x, y, w, h in bodies:
+        # circle_center = (x + w // 2, y + h // 2)
+        # Draw(frame).circle(circle_center, w // 2)
+        Draw(frame).rectangle((x, y), (x+w, y+h))
     # show frame on screen
     cv2.imshow("frame", frame)
     # cv2.imshow("gray", gray)
